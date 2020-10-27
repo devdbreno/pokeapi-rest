@@ -1,0 +1,7 @@
+{
+  "*.ts": [
+    "yarn prettier:fix",
+    "yarn eslint:fix",
+    "yarn test:staged"
+  ]
+}
