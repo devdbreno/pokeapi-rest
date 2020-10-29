@@ -18,12 +18,15 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "outDir": "dist",
-    "rootDirs": ["src", "test"],
     "paths": {
-      "@src/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@shared/*": ["src/modules/shared/*"],
+      "@trainer/*": ["src/modules/trainer/*"],
+      "@pokeapi/*": ["src/services/pokeapi/*"]
     }
   },
   "include": ["src/**/*.ts", "test/**/*.ts"],
