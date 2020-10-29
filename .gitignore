@@ -3,8 +3,8 @@ dist/
 node_modules/
 
 # Environment files
-env/*
-!env/.env.sample
+.env*
+!.env.sample
 
 # Logs
 logs
