@@ -1,19 +1,23 @@
 version: '3'
 
 services:
-  pgsql:
+  db:
+    container_name: postgres
     image: postgres:alpine
-    restart: always
-    env_file: env/.env.development
-    container_name: 'pgsql'
+    ports:
+      - ${DATABASE_PORT:-5432}:${DATABASE_DEFAULT_PORT:-5432}
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-}
+      POSTGRES_DB: ${DATABASE_NAME:-}
     volumes:
       - pgdata:/var/lib/postgresql/data
 
   adminer:
     image: adminer
-    restart: always
+    container_name: adminer
     ports:
-      - 8080:8080
+      - ${ADMINER_PORT:-8080}:${ADMINER_DEFAULT_PORT:-8080}
 
 volumes:
   pgdata:
