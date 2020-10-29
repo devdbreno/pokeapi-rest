@@ -2,6 +2,7 @@
   "*.ts": [
     "yarn prettier:fix",
     "yarn eslint:fix",
-    "yarn test:staged"
+    "yarn test:staged:unit",
+    "yarn test:staged:e2e"
   ]
 }
