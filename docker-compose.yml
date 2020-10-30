@@ -5,8 +5,10 @@ services:
     container_name: postgres
     image: postgres:alpine
     ports:
-      - ${DATABASE_PORT:-5432}:${DATABASE_DEFAULT_PORT:-5432}
+      - ${DATABASE_PORT}:${DATABASE_DEFAULT_PORT}
     environment:
+      DATABASE_PORT: ${DATABASE_PORT:-5432}
+      DATABASE_PORT: ${DATABASE_DEFAULT_PORT:-5432}
       POSTGRES_USER: ${DATABASE_USER:-postgres}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
       POSTGRES_DB: ${DATABASE_NAME:-postgresdb}
@@ -18,11 +20,13 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin
+    ports:
+      - ${PGADMIN_PORT}:${PGADMIN_LISTEN_PORT}
     environment:
+      PGADMIN_PORT: ${PGADMIN_PORT:-8080}
+      PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT:-8080}
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@email.com}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-pgadmin4pass}
-    ports:
-      - ${PGADMIN_PORT:-8080}:${PGADMIN_LISTEN_PORT:-8080}
     depends_on:
       - db
     networks:
