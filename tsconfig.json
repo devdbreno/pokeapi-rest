@@ -24,9 +24,10 @@
     "outDir": "dist",
     "paths": {
       "@/*": ["src/*"],
-      "@shared/*": ["src/modules/shared/*"],
       "@trainer/*": ["src/modules/trainer/*"],
-      "@pokeapi/*": ["src/services/pokeapi/*"]
+      "@gateways/*": ["src/gateways/*"],
+      "@entities/*": ["src/entities/*"],
+      "@interfaces/*": ["src/interfaces/*"]
     }
   },
   "include": ["src/**/*.ts", "test/**/*.ts"],

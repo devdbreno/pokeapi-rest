@@ -9,8 +9,9 @@ module.exports = {
   },
   moduleNameMapper: {
     '@/(.*)': '<rootDir>/src/$1',
-    '@shared/(.*)': '<rootDir>/src/modules/shared/$1',
     '@trainer/(.*)': '<rootDir>/src/modules/trainer/$1',
-    '@pokeapi/(.*)': '<rootDir>/src/services/pokeapi/$1'
+    '@entities/(.*)': '<rootDir>/src/entities/$1',
+    '@gateways/(.*)': '<rootDir>/src/gateways/$1',
+    '@interfaces/(.*)': '<rootDir>/src/interfaces/$1'
   }
 }
