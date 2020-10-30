@@ -9,8 +9,6 @@ import { AddPokemonDTO, CreateTrainerDTO } from '@interfaces/trainer.interface'
 
 @EntityRepository(TrainerEntity)
 export class TrainerRepository extends Repository<TrainerEntity> {
-  private logger = new Logger(TrainerRepository.name)
-
   public async createTrainer(createTrainerDTO: CreateTrainerDTO): Promise<void> {
     const { username, password } = createTrainerDTO
 
@@ -20,8 +18,6 @@ export class TrainerRepository extends Repository<TrainerEntity> {
     trainerEntity.pokemons = []
     trainerEntity.salt = await genSalt()
     trainerEntity.password = await TrainerRepository.hashPassword(password, trainerEntity.salt)
-
-    this.logger.debug(trainerEntity)
 
     try {
       await trainerEntity.save()

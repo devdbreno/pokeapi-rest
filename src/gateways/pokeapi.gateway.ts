@@ -1,4 +1,4 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 
 import Pokedex from 'pokedex-promise-v2'
 
@@ -6,7 +6,6 @@ import { PokemonGateway } from '@interfaces/pokeapi.interface'
 
 @Injectable()
 export class PokeapiGateway {
-  private logger = new Logger(PokeapiGateway.name)
   private pokedexManager = new Pokedex({ cacheLimit: 120 * 1000, timeout: 2 * 1000 })
 
   public async findPokemonByName(pokemonName: string): Promise<PokemonGateway> {
@@ -19,8 +18,8 @@ export class PokeapiGateway {
       pokemon.name = name
       pokemon.types = types
       pokemon.weight = weight
-    } catch ({ message }) {
-      throw new NotFoundException(`Pokemon '${pokemonName} not found!'`)
+    } catch (e) {
+      throw new NotFoundException(`Pokemon '${pokemonName}' not found!`)
     }
 
     return pokemon

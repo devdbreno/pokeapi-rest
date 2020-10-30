@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 
-import { serverConfig, databaseConfig } from '@/config'
+import { AppConfig, TypeOrmConfig } from '@/config'
 
 import { TrainerModule } from '@trainer/trainer.module'
+import { TypeOrmModule } from '@nestjs/typeorm'
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      load: [serverConfig, databaseConfig]
-    }),
+    ConfigModule.forRoot({ load: [AppConfig] }),
+    TypeOrmModule.forRootAsync({ imports: [ConfigModule], useClass: TypeOrmConfig }),
     TrainerModule
   ]
 })

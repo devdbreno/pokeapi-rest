@@ -8,7 +8,7 @@ export type TrainerAddPokemon = Pick<TrainerEntity, 'pokemons' | 'save'>
 
 export class CreateTrainerDTO {
   @IsString()
-  @Length(3, 20)
+  @Length(4, 20)
   username: string
 
   @IsString()
